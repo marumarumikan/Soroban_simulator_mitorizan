@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<script type="text/javascript" src="main1.js">
+let timer1;
+var input_message;
+var auto_count;
+var kaisuu_seigen;
+
+</script>
+
+
+<head>
+        <title>JavaScript テスト</title>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+
+<canvas id="sample" width="1000" height="300" style="border:1px solid"></canvas>
+<script type="text/javascript">
+
+
+
+
+window.onload = function(){
+  var canvas = document.getElementById('sample');
+  if (canvas.getContext){
+
+_1keta_func_init(0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
+  
+  document.getElementById("btn2").addEventListener("click", function(){
+var input_message = document.getElementById("spin3").value;
+    count_func(input_message);
+  });
+
+}
+/*
+var count_step=0;
+
+function syori1(){
+input_message = document.getElementById("spin3").value;
+count_func(input_message);
+
+var count_step_seigen = document.getElementById("spin_seigen_kaisuu").value;
+
+count_step++;
+	
+if(count_step==count_step_seigen)
+{
+   btn3.disabled = false;
+   clearInterval(timer1);
+count_step=0;
+
+}
+
+}
+*/
+
+  document.getElementById("btn3").addEventListener("click", function(){
+input_message = document.getElementById("spin3").value;
+   btn3.disabled = true;
+var kankaku = document.getElementById("spin_timer_kankaku").value;
+timer1 = setInterval(syori1,kankaku);
+
+  });
+
+  document.getElementById("btn4").addEventListener("click", function(){
+   btn3.disabled = false;
+   clearInterval(timer1);
+
+  });
+
+
+var elem2 =document.getElementById("btn2");
+elem2.style.position = "absolute";
+elem2.style.left ='0px';
+elem2.style.top= '500px';
+
+var elem3 =document.getElementById("output_message");
+elem3.style.position = "absolute";
+elem3.style.left ='0px';
+elem3.style.top= '550px';
+
+var elem4 =document.getElementById("area1");
+elem4.style.position = "absolute";
+elem4.style.left ='30px';
+elem4.style.top= '405px';
+
+var elem5 =document.getElementById("spin3");
+elem5.style.position = "absolute";
+elem5.style.left ='100px';
+elem5.style.top= '400px';
+
+var elem6 =document.getElementById("spin1");
+elem6.style.position = "absolute";
+elem6.style.left ='135px';
+elem6.style.top= '400px';
+
+var elem7 =document.getElementById("spin2");
+elem7.style.position = "absolute";
+elem7.style.left ='135px';
+elem7.style.top= '414px';
+
+var elem8 =document.getElementById("btn3");
+elem8.style.position = "absolute";
+elem8.style.left ='600px';
+elem8.style.top= '400px';
+
+var elem9 =document.getElementById("btn4");
+elem9.style.position = "absolute";
+elem9.style.left ='700px';
+elem9.style.top= '400px';
+
+var elem10 =document.getElementById("spin_seigen_kaisuu");
+elem10.style.position = "absolute";
+elem10.style.left ='300px';
+elem10.style.top= '400px';
+
+var elem41 =document.getElementById("area2");
+elem41.style.position = "absolute";
+elem41.style.left ='230px';
+elem41.style.top= '400px';
+
+var elem11 =document.getElementById("spin_seigen1");
+elem11.style.position = "absolute";
+elem11.style.left ='335px';
+elem11.style.top= '400px';
+
+var elem12 =document.getElementById("spin_seigen2");
+elem12.style.position = "absolute";
+elem12.style.left ='335px';
+elem12.style.top= '414px'
+
+var elem42 =document.getElementById("area3");
+elem42.style.position = "absolute";
+elem42.style.left ='370px';
+elem42.style.top= '400px';
+
+var elem13 =document.getElementById("spin_timer_kankaku");
+elem13.style.position = "absolute";
+elem13.style.left ='500px';
+elem13.style.top= '400px';
+
+var elem14 =document.getElementById("spin_kankaku1");
+elem14.style.position = "absolute";
+elem14.style.left ='535px';
+elem14.style.top= '400px';
+
+var elem15 =document.getElementById("spin_kankaku2");
+elem15.style.position = "absolute";
+elem15.style.left ='535px';
+elem15.style.top= '414px'
+
+}
+
+var hassei_ketasuu;
+
+var text=[];
+/*
+var file = document.getElementById('file');
+var result = document.getElementById('result');
+ 
+// File APIに対応しているか確認
+if(window.File && window.FileReader && window.FileList && window.Blob) {
+    function loadLocalCsv(e) {
+        // ファイル情報を取得
+        var fileData = e.target.files[0];
+        console.log(fileData); // 取得した内容の確認用
+ 
+        // CSVファイル以外は処理を止める
+        if(!fileData.name.match('.txt$')) {
+            alert('TXTファイルを選択してください');
+            return;
+        }
+ 
+        // FileReaderオブジェクトを使ってファイル読み込み
+        var reader = new FileReader();
+        // ファイル読み込みに成功したときの処理
+        reader.onload = function() {
+            var cols = reader.result.split('\n');
+           var output = reader.result.replace(/(\n|\r)/g, '<br />');
+	document.querySelector("#result2").innerHTML = output;
+
+		var data = [];
+            for (var i = 0; i < cols.length; i++) {
+		
+                data[i] = cols[i].split('/');
+            }
+            var insert = createTable(data);
+            result.appendChild(insert);
+        }
+        // ファイル読み込みを実行
+        reader.readAsText(fileData);
+    }
+    file.addEventListener('change', loadLocalCsv, false);
+ 
+} else {
+    file.style.display = 'none';
+    result.innerHTML = 'File APIに対応したブラウザでご確認ください';
+}
+ 
+function createTable(data) {
+    var table = document.createElement('table');
+    for (var i = 0; i < data.length; i++) {
+        var tr = document.createElement('tr');
+        for (var j = 0; j < data[i].length; j++) {
+            var td = document.createElement('td');
+            td.innerText = data[i][j];
+	 
+            tr.appendChild(td);
+        }
+        table.appendChild(tr);
+    }
+    return table;
+}
+*/
+window.addEventListener('DOMContentLoaded', function() {
+// ファイルが指定されたタイミングで、その内容を表示
+document.querySelector("#file").addEventListener('change', function(e) {
+    // File APIを利用できるかをチェック
+    if (window.File) {
+      // 指定されたファイルを取得
+      var input = document.querySelector('#file').files[0];
+      // ファイル読み込みの準備（1）
+      var reader = new FileReader();
+      // ファイルの読み込みに成功したら、その内容を<div id="result">に反映（2）
+      reader.addEventListener('load', function(e) {
+        var output = reader.result.replace(/(\n|\r)/g, '<br />');
+        var textArray = reader.result.split(/\r\n|\r|\n/);
+	var text0=textArray[0].split('/');
+	document.querySelector("#result").innerHTML = text0[0];
+	document.querySelector("#result2").innerHTML = textArray[5];
+      }, true);
+      // ファイルの内容をテキストとして取得（3）
+      reader.readAsText(input, 'UTF-8');
+    }
+  }, true);
+});
+function fileListDilectory(files, 表示場所) {
+    var 表示内容 = "";
+    for (i=0; i<files.length; i++) {
+        表示内容
+            += "name[" + i + "]=" + files[i].name
+            + " urn["  + i + "]=" + files[i].urn
+            + " path[" + i + "]=" + files[i].webkitRelativePath
+            + " type[" + i + "]=" + files[i].type
+            + " size[" + i + "]=" + files[i].size
+            + " lmd["  + i + "]=" + files[i].lastModifiedDate
+            + "<br>";
+    }
+    document.getElementById(表示場所).innerHTML = 表示内容;
+}
+</script>
+
+<p><input type="button" id="btn1" value="btn1"></p>
+<p><input type="button" id="btn2" value="ステップ実行"></p>
+<p><input type="button" id="btn3" value="自動実行開始"></p>
+<p><input type="button" id="btn4" value="自動実行停止"></p>
+
+<form>
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td rowspan="2"><input type="text" id="spin3" name="number" value="6" 
+style="width:30px;height:20px;
+font-weight:bold;"/></td>
+
+
+<td><input type="button" id="spin1" value=" /\" onclick="this.form.number.value++";
+
+style="font-size:7px;margin:0;padding:0;width:20px;height:13px;"></td>
+</tr>
+<tr>
+<td><input type="button" id="spin2" value=" /\" onclick="this.form.number.value--";
+
+style="font-size:7px;margin:0;padding:0;width:20px;height:13px;"></td>
+</tr>
+<table>
+</form>
+  
+<form>
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td rowspan="2"><input type="text" id="spin_seigen_kaisuu" name="number" value="10" 
+style="width:30px;height:20px;
+font-weight:bold;"/></td>
+
+
+<td><input type="button" id="spin_seigen1" value=" /\" onclick="this.form.number.value++";
+
+style="font-size:7px;margin:0;padding:0;width:20px;height:13px;"></td>
+</tr>
+<tr>
+<td><input type="button" id="spin_seigen2" value=" /\" onclick="this.form.number.value--";
+
+style="font-size:7px;margin:0;padding:0;width:20px;height:13px;"></td>
+</tr>
+<table>
+</form>
+
+
+<form>
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td rowspan="2"><input type="text" id="spin_timer_kankaku" name="number" value="500" 
+style="width:30px;height:20px;
+font-weight:bold;"/></td>
+
+
+<td><input type="button" id="spin_kankaku1" value=" /\" onclick="this.form.number.value++";
+
+style="font-size:7px;margin:0;padding:0;width:20px;height:13px;"></td>
+</tr>
+<tr>
+<td><input type="button" id="spin_kankaku2" value=" /\" onclick="this.form.number.value--";
+
+style="font-size:7px;margin:0;padding:0;width:20px;height:13px;"></td>
+</tr>
+<table>
+</form>
+
+  <form id="form1" action="#">
+    <input type="button" onclick="func1()" value="決定">
+  </form>
+  <div id="output_message"></div>
+
+<div id="area1">発生桁数</div>
+<div id="area2">発生口数</div>
+<div id="area3">発生間隔[ミリ秒]</div>
+</canvas>
+
+<input type="file" name="file" id="file">
+
+<!--読み込み結果を反映する場所を用意-->
+<!--
+<p><input  type="file"
+     webkitdirectory directory
+     onChange="./"></p>
+-->
+<div id="表示場所" class="red"></div>
+
+<div id="result"></div>
+<div id="result2"></div>
+</body>
+</html>
